@@ -50,7 +50,7 @@
 - Веб-интерфейс рабочего места исполнителя (на мобильном телефоне)
 - Исходный код, размещенный в открытых источниках
 
-###При реализации требуется учесть, что:
+### При реализации требуется учесть, что:
 
 - Занятый ресурс не может быть использован в одно и то же время на разных задачах
 - Диспетчер может назначать и снимать задачи с исполнителя
@@ -78,3 +78,4 @@
 - [KNN C++](https://medium.com/stepstone-tech/native-like-performance-for-nearest-neighbors-search-using-hnswlib-in-java-applications-f3c4d19b39b5)
 - [ML java](https://www.codingame.com/playgrounds/5439/machine-learning-with-java---part-3-k-nearest-neighbor)
 - [ML ШАД](https://ml-handbook.ru/chapters/metric_based/intro?ysclid=l9ivuqpyox53399634)
+- [java + Exel](https://www.youtube.com/watch?v=McZ77Y9jZno)
