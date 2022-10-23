@@ -23,9 +23,10 @@ public class ExcelReader {
             for (int row = 1; row < 859; row++) {
                 int point_id = (int) wb.getSheetAt(0).getRow(row).getCell(0).getNumericCellValue();
                 String location_id;
+
                 if (wb.getSheetAt(0).getRow(row).getCell(1).getCellType().equals(CellType.NUMERIC))
-                    location_id = String.valueOf(wb.getSheetAt(0).getRow(row)
-                            .getCell(1).getNumericCellValue());
+                    location_id = String.valueOf((int)(wb.getSheetAt(0).getRow(row)
+                            .getCell(1).getNumericCellValue()));
                 else
                     location_id = wb.getSheetAt(0).getRow(row).getCell(1).getStringCellValue();
 
@@ -73,16 +74,31 @@ public class ExcelReader {
                         .withMonth(dateTime.getMonth().getValue())
                         .withDayOfMonth(dateTime.getDayOfMonth());
 
-                String plane = String.valueOf(wb.getSheetAt(0).getRow(row).getCell(9).getNumericCellValue());
+                String plane;
+                if ((wb.getSheetAt(0).getRow(row).getCell(9).getCellType() == CellType.NUMERIC))
+                    plane = String.valueOf((int)(wb.getSheetAt(0).getRow(row).getCell(9).getNumericCellValue()));
+                else
+                    plane = wb.getSheetAt(0).getRow(row).getCell(9).getStringCellValue();
+
                 String gate = wb.getSheetAt(0).getRow(row).getCell(10).getStringCellValue();
                 int passengers = (int) wb.getSheetAt(0).getRow(row).getCell(11).getNumericCellValue();
 
                 String type = wb.getSheetAt(0).getRow(row).getCell(1).getStringCellValue();
                 if (type.equals("D")) {
                     time = time.minusMinutes(30);
-                    list.add(new Task(time, points.get(gate), points.get(plane), passengers));
+                    try {
+                        list.add(new Task(time, points.get(gate), points.get(plane), passengers));
+                    }catch (Exception ex) {
+                        System.err.println(gate + " ||| " + plane);
+                        System.err.println(ex.getMessage());
+                    }
                 }
-                list.add(new Task(time,points.get(plane),  points.get(gate), passengers));
+                try {
+                    list.add(new Task(time,points.get(plane),  points.get(gate), passengers));
+                }catch (Exception ex) {
+                    System.err.println(gate + " ||| " + plane);
+                    System.err.println(ex.getMessage());
+                }
             }
         }
         catch (IOException ex)

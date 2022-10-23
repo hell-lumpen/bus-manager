@@ -36,6 +36,7 @@ public class AvailableBusesList {
         BusTask leftTask = avBus.getLeftTask();
         BusTask rightTask = avBus.getRightTask();
 
+        newBus.setBusId(avBus.getBusId());
         //установка правой границы
         newBus.setRightTask(task);
         newBus.setTimeEnd(task.getTimeStart());
@@ -52,6 +53,7 @@ public class AvailableBusesList {
             availableBuses.add(newBus);
 
         newBus = new AvailableBus();
+        newBus.setBusId(avBus.getBusId());
         //установка левой границы
         newBus.setLeftTask(task);
         newBus.setTimeStart(task.getTimeEnd());
@@ -59,9 +61,9 @@ public class AvailableBusesList {
         //проверка правой границы
         if (rightTask != null){
             newBus.setRightTask(rightTask);
-            newBus.setTimeStart(leftTask.getTimeEnd());
+            newBus.setTimeEnd(rightTask.getTimeStart());
         } else {
-            newBus.setTimeStart(avBus.getTimeEnd());
+            newBus.setTimeEnd(avBus.getTimeEnd());
         }
 
         if (newBus.getTimeStart() != newBus.getTimeEnd())

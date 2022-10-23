@@ -23,7 +23,7 @@ public class FTaskManager {
                 task = tt;
 
 
-        busManager.availableBusesList.ReleaseBus(task);
+        busManager.availableBusesListObj.ReleaseBus(task);
         taskList.remove(task);
         //TODO: освобождение автобусов
     }
