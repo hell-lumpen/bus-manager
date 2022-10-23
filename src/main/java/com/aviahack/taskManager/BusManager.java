@@ -100,45 +100,45 @@ public class BusManager {
         });
 
         //TODO: умное распределение автобусов(150 == 100 + 50, 150 != 100 + 100)
-//        if ((noDistributedPeople % 100) <= 50 && (noDistributedPeople % 100) > 0) {
-//            for (int i = 0 ; i < aviableBusesList.size(); i++) {
-//                AvailableBus avBus = aviableBusesList.get(i);
-//                Bus bus = buses.get(avBus.getBusId());
-//                if (bus.busType == BusType.SMALL) {
-//                    noDistributedPeople -= (bus.busType.getMaximumWorkload());
-//                    task.busesList.add(avBus.getBusId());
-//                    availableBusesList.BookingBus(avBus, task);
-//                    aviableBusesList.remove(avBus);
-//                    break;
-//                }
-//            }
-//        }
+        if ((noDistributedPeople % 100) <= 50 && (noDistributedPeople % 100) > 0) {
+            for (int i = 0 ; i < aviableBusesList.size(); i++) {
+                AvailableBus avBus = aviableBusesList.get(i);
+                Bus bus = buses.get(avBus.getBusId());
+                if (bus.busType == BusType.SMALL) {
+                    noDistributedPeople -= (bus.busType.getMaximumWorkload());
+                    task.busesList.add(avBus.getBusId());
+                    availableBusesListObj.BookingBus(avBus, task);
+                    aviableBusesList.remove(avBus);
+                    break;
+                }
+            }
+        }
 
-//        int idBus = 0;
-//        while(noDistributedPeople > 0) {
-//            if (aviableBusesList.size() <= 0) {
-//                System.err.println("Available Buses is empty");
-//                return;
-//            }
-//            Bus bus = buses.get(aviableBusesList.get(idBus).getBusId());
-//            if (bus.busType == BusType.LARGE) {
-//                noDistributedPeople -= (bus.busType.getMaximumWorkload());
-//                task.busesList.add(aviableBusesList.get(idBus).getBusId());
-//
-//                availableBusesList.BookingBus(aviableBusesList.get(idBus), task);
-//                aviableBusesList.remove(idBus);
-//
-//            }
-//            else
-//                idBus++;
-//            if (idBus == aviableBusesList.size())
-//                break;
-//        }
-//
         int idBus = 0;
         while(noDistributedPeople > 0) {
+            if (aviableBusesList.size() <= 0) {
+//                System.err.println("Available Buses is empty");
+                return;
+            }
+            Bus bus = buses.get(aviableBusesList.get(idBus).getBusId());
+            if (bus.busType == BusType.LARGE) {
+                noDistributedPeople -= (bus.busType.getMaximumWorkload());
+                task.busesList.add(aviableBusesList.get(idBus).getBusId());
+
+                availableBusesListObj.BookingBus(aviableBusesList.get(idBus), task);
+                aviableBusesList.remove(idBus);
+
+            }
+            else
+                idBus++;
+            if (idBus == aviableBusesList.size())
+                break;
+        }
+
+        idBus = 0;
+        while(noDistributedPeople > 0) {
             if (idBus == aviableBusesList.size()) {
-                System.err.println("All busses in work");
+//                System.err.println("All busses in work");
                 return;
             }
             //TODO: отослать предупреждение диспетчеру
@@ -148,8 +148,9 @@ public class BusManager {
             availableBusesListObj.BookingBus(aviableBusesList.get(idBus), task);
 //            aviableBusesList.remove(idBus);
             idBus++;
-            if (idBus == aviableBusesList.size())
-                System.err.println("All busses in work");
+//            if (idBus == aviableBusesList.size())
+
+//                System.err.println("All busses in work");
                 //TODO: отослать предупреждение диспетчеру
         }
     }

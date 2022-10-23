@@ -89,15 +89,16 @@ public class ExcelReader {
                     try {
                         list.add(new Task(time, points.get(gate), points.get(plane), passengers));
                     }catch (Exception ex) {
-                        System.err.println(gate + " ||| " + plane);
-                        System.err.println(ex.getMessage());
+//                        System.err.println(gate + " ||| " + plane);
+//                        System.err.println(ex.getMessage());
                     }
                 }
                 try {
                     list.add(new Task(time,points.get(plane),  points.get(gate), passengers));
                 }catch (Exception ex) {
-                    System.err.println(gate + " ||| " + plane);
-                    System.err.println(ex.getMessage());
+//                    System.err.println(gate + " ||| " + plane);
+//                    System.err.println(ex.getMessage());
+
                 }
             }
         }

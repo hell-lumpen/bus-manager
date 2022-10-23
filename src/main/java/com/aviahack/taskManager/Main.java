@@ -21,7 +21,12 @@ public class Main {
         }
 
         for (BusTask task : taskManager.taskList) {
-            System.out.println(task.busesList);
+            System.out.print("time start: " + task.getTimeStart() );
+            System.out.print(" | time end: " + task.getTimeEnd() );
+            System.out.print(" | location start: " + task.locationStart );
+            System.out.print(" | location end: " + task.locationEnd );
+            System.out.print(" | count people : " + task.countPeople );
+            System.out.println(" | buses: " + task.busesList);
         }
 
 //        BusManager taskManager = new BusManager();
