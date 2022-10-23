@@ -8,7 +8,7 @@ public class Main {
 
 
 
-        TaskManager taskManager = new TaskManager();
+        BusManager taskManager = new BusManager();
         DistanceManager dm = new DistanceManager();
         BusTask task = new BusTask();
         task.locationStart = 855;

@@ -25,9 +25,6 @@ public class AvailableBusesList {
             }
         }
         return list;
-//        while(availableBuses.get(ind1).getTimeStart().compareTo(startTime) < 0) { ind1++; }
-//        while(availableBuses.get(ind2).getTimeEnd().compareTo(endTime) > 0) { ind2++; }
-//        return availableBuses.subList(ind1,ind2);
     }
 
     public void BookingBus(AvailableBus avBus, BusTask task){
