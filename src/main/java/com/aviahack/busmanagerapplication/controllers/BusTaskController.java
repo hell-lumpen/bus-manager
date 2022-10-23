@@ -24,7 +24,7 @@ public class BusTaskController {
     @GetMapping("/{id}")
     public BusTask getById(@PathVariable Long id) {
         return tasks.stream()
-                .filter(developer -> developer.getBusTaskId().equals(id))
+                .filter(task -> task.getBusTaskId().equals(id))
                 .findFirst()
                 .orElse(null);
     }
