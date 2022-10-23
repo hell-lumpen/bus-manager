@@ -59,6 +59,7 @@ public class TaskManager {
         ArrayList<AvailableBus> aviableBusesList = new ArrayList<>();
 
         int journeyTime;
+
         //TODO: умное распределение автобусов(150 == 100 + 50, 150 != 100 + 100)
         for (AvailableBus avBus : aviableBuses) {
             BusTask leftTask = avBus.getLeftTask();
@@ -78,63 +79,49 @@ public class TaskManager {
 
         }
 
-        ArrayList<AvailableBus> availableBusesSorted = new ArrayList<>();
-        int id = 0;
-        int s1, s2;
-        aviableBusesList.sort(new Comparator<AvailableBus>() {
-            @Override
-            public int compare(AvailableBus bus1, AvailableBus bus2) {
-                // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
-                if (bus1.getLeftTask() == null && bus2.getLeftTask() == null) {
-                    if (distanceManager.GetDistance(buses.get(bus1.getBusId()).location, task.locationStart)
-                            > distanceManager.GetDistance(buses.get(bus2.getBusId()).location, task.locationStart))
-                        return 1;
-                    else if (distanceManager.GetDistance(buses.get(bus1.getBusId()).location, task.locationStart)
-                            == distanceManager.GetDistance(buses.get(bus2.getBusId()).location, task.locationStart))
-                        return 0;
-                    else
-                        return -1;
+        aviableBusesList.sort((bus1, bus2) -> {
+            // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+            if (bus1.getLeftTask() == null && bus2.getLeftTask() == null) {
+                if (distanceManager.GetDistance(buses.get(bus1.getBusId()).location, task.locationStart)
+                        > distanceManager.GetDistance(buses.get(bus2.getBusId()).location, task.locationStart))
+                    return 1;
+                else if (distanceManager.GetDistance(buses.get(bus1.getBusId()).location, task.locationStart)
+                        == distanceManager.GetDistance(buses.get(bus2.getBusId()).location, task.locationStart))
+                    return 0;
+                else
+                    return -1;
 
 
-                } else if (bus1.getLeftTask() == null && bus2.getLeftTask() != null) {
-                    if (distanceManager.GetDistance(buses.get(bus1.getBusId()).location, task.locationStart)
-                            > distanceManager.GetDistance(bus2.getLeftTask().locationEnd, task.locationStart))
-                        return 1;
-                    else if (distanceManager.GetDistance(buses.get(bus1.getBusId()).location, task.locationStart)
-                            == distanceManager.GetDistance(bus2.getLeftTask().locationEnd, task.locationStart))
-                        return 0;
-                    else
-                        return -1;
-                } else if (bus1.getLeftTask() != null && bus2.getLeftTask() == null) {
-                    if (distanceManager.GetDistance(bus1.getLeftTask().locationEnd, task.locationStart)
-                            > distanceManager.GetDistance(buses.get(bus2.getBusId()).location, task.locationStart))
-                        return 1;
-                    else if (distanceManager.GetDistance(bus1.getLeftTask().locationEnd, task.locationStart)
-                            == distanceManager.GetDistance(buses.get(bus2.getBusId()).location, task.locationStart))
-                        return 0;
-                    else
-                        return -1;
-                } else {
-                    return Integer.compare(distanceManager.GetDistance(bus1.getLeftTask().locationEnd, task.locationStart), distanceManager.GetDistance(bus2.getLeftTask().locationEnd, task.locationStart));
-                }
+            } else if (bus1.getLeftTask() == null && bus2.getLeftTask() != null) {
+                if (distanceManager.GetDistance(buses.get(bus1.getBusId()).location, task.locationStart)
+                        > distanceManager.GetDistance(bus2.getLeftTask().locationEnd, task.locationStart))
+                    return 1;
+                else if (distanceManager.GetDistance(buses.get(bus1.getBusId()).location, task.locationStart)
+                        == distanceManager.GetDistance(bus2.getLeftTask().locationEnd, task.locationStart))
+                    return 0;
+                else
+                    return -1;
+            } else if (bus1.getLeftTask() != null && bus2.getLeftTask() == null) {
+                if (distanceManager.GetDistance(bus1.getLeftTask().locationEnd, task.locationStart)
+                        > distanceManager.GetDistance(buses.get(bus2.getBusId()).location, task.locationStart))
+                    return 1;
+                else if (distanceManager.GetDistance(bus1.getLeftTask().locationEnd, task.locationStart)
+                        == distanceManager.GetDistance(buses.get(bus2.getBusId()).location, task.locationStart))
+                    return 0;
+                else
+                    return -1;
+            } else {
+                return Integer.compare(distanceManager.GetDistance(bus1.getLeftTask().locationEnd, task.locationStart), distanceManager.GetDistance(bus2.getLeftTask().locationEnd, task.locationStart));
             }
         });
 
-//        System.out.println("-------");
-//        for (var b : aviableBusesList){
-//            System.out.print( b.getBusId() + "  ");
-//        }
-//        System.out.println(" ");
-
         int idBus = 0;
         while(noDistributedPeople > 0) {
-
             noDistributedPeople -= (buses.get(aviableBusesList.get(idBus).getBusId())).busType.getMaximumWorkload();
             task.busesList.add(aviableBusesList.get(idBus).getBusId());
             availableBusesList.BookingBus(aviableBusesList.get(idBus), task);
             idBus++;
         }
-
     }
     public void RemoveTask(int TaskHash) {
 
