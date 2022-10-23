@@ -224,8 +224,6 @@ public class TaskManager {
         }
 
         ArrayList<AvailableBus> availableBusesSorted = new ArrayList<>();
-        int id = 0;
-        int s1, s2;
         for (var b : aviableBusesList){
             System.out.print( b.getBusId() + "  ");
         }
