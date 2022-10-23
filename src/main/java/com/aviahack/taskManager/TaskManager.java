@@ -23,8 +23,8 @@ public class TaskManager {
                 task = tt;
 
 
-        busManager.availableBusesList.ReleaseBus(task);
-        taskList.remove(task);
+        busManager.availableBusesList.ReleaseBs(task);
+        taskList.remove(task);adsad
         //TODO: освобождение автобусов
     }
 }
