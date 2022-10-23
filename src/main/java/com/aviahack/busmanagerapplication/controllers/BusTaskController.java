@@ -6,7 +6,7 @@ import com.aviahack.busmanagerapplication.entities.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/api/v1/task")
 public class BusTaskController {
     private final List<BusTask> tasks = List.of(
