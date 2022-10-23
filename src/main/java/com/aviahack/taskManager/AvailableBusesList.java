@@ -1,4 +1,4 @@
-package taskManager;
+package com.aviahack.taskManager;
 
 import lombok.Getter;
 import lombok.Setter;

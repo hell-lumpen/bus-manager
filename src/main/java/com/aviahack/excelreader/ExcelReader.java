@@ -1,4 +1,4 @@
-package excelReader;
+package com.aviahack.excelreader;
 
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Workbook;

@@ -1,4 +1,4 @@
-package excelReader;
+package com.aviahack.excelreader;
 
 import java.util.Comparator;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package test;
+package com.aviahack.test;
 
 import lombok.NonNull;
 import org.jetbrains.annotations.NotNull;

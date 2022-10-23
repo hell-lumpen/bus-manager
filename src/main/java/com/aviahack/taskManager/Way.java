@@ -1,4 +1,4 @@
-package taskManager;
+package com.aviahack.taskManager;
 
 public class Way {
     public int locationStart;
