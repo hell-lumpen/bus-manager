@@ -282,12 +282,15 @@ public class TaskManager {
         }
         System.out.println(" ");
 
-//        noDistributedPeople -= (buses.get(avBus.getBusId())).busType.getMaximumWorkload();
-//        task.busesList.add(avBus.getBusId());
-//        availableBusesList.BookingBus(avBus, task);
-//        if (noDistributedPeople <= 0)
-//            return task;
-        return null;
+        int idBus = 0;
+        while(noDistributedPeople <= 0) {
+
+            noDistributedPeople -= (buses.get(aviableBusesList.get(idBus).getBusId())).busType.getMaximumWorkload();
+            task.busesList.add(aviableBusesList.get(idBus).getBusId());
+            availableBusesList.BookingBus(aviableBusesList.get(idBus), task);
+            idBus++;
+        }
+        return task;
 
     }
 

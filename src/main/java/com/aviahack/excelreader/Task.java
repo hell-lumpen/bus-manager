@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import com.aviahack.taskManager.DistanceManager;
 @Getter
 class Task {
     public ArrayList<Integer> busesList;
