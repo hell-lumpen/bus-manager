@@ -20,7 +20,7 @@ public class TaskManager {
         BusTask task = null;
         for (BusTask tt : taskList)
             if (tt.hashCode() == taskHash)
-                task = tt;
+                task = tt;sadasd
 
 
         busManager.availableBusesList.ReleaseBs(task);
