@@ -2,11 +2,11 @@ package com.aviahack.taskManager;
 
 import java.util.ArrayList;
 
-public class TaskManager {
+public class FTaskManager {
     BusManager busManager;
     ArrayList<BusTask> taskList;
 
-    TaskManager(){
+    FTaskManager(){
         busManager = new BusManager();
         taskList = new ArrayList<>();
     }
@@ -20,11 +20,11 @@ public class TaskManager {
         BusTask task = null;
         for (BusTask tt : taskList)
             if (tt.hashCode() == taskHash)
-                task = tt;sadasd
+                task = tt;
 
 
-        busManager.availableBusesList.ReleaseBs(task);
-        taskList.remove(task);adsad
+        busManager.availableBusesList.ReleaseBus(task);
+        taskList.remove(task);
         //TODO: освобождение автобусов
     }
 }
