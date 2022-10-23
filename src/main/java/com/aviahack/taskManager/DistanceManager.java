@@ -1,7 +1,7 @@
-package taskManager;
+package com.aviahack.taskManager;
 
-import excelReader.ExcelReader;
-import excelReader.Pair;
+import com.aviahack.excelreader.ExcelReader;
+import com.aviahack.excelreader.Pair;
 
 import java.util.Comparator;
 import java.util.Map;

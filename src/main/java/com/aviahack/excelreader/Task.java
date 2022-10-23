@@ -1,4 +1,4 @@
-package excelReader;
+package com.aviahack.excelreader;
 
 import lombok.Getter;
 import lombok.NonNull;

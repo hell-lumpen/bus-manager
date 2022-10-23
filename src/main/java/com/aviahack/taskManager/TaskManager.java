@@ -1,4 +1,4 @@
-package taskManager;
+package com.aviahack.taskManager;
 
 import java.time.LocalDateTime;
 import java.util.*;
