@@ -14,10 +14,12 @@ import java.time.ZoneId;
 import java.util.*;
 
 public class ExcelReader {
+
+    String basePath = "src/main/resources/xlsx/";
     public @Nullable Map<String, Integer> ReadPointsTable() {
         Map<String, Integer> map = new TreeMap<String,Integer>();
         try {
-            Workbook wb = new XSSFWorkbook(new FileInputStream("src/main/resources/Distance.xlsx"));
+            Workbook wb = new XSSFWorkbook(new FileInputStream(basePath + "Distance.xlsx"));
             for (int row = 1; row < 859; row++) {
                 int point_id = (int) wb.getSheetAt(0).getRow(row).getCell(0).getNumericCellValue();
                 String location_id;
@@ -40,12 +42,15 @@ public class ExcelReader {
     public @Nullable Map<Pair, Integer> ReadRoadsTable() {
         Map<Pair, Integer> map = new HashMap<>();
         try {
-            Workbook wb = new XSSFWorkbook(new FileInputStream("src/main/resources/Distance.xlsx"));
+            Workbook wb = new XSSFWorkbook(new FileInputStream(basePath + "Distance.xlsx"));
             for (int row = 1; row <= 2022; row++) {
                 int point1   = (int) wb.getSheetAt(1).getRow(row).getCell(1).getNumericCellValue();
                 int point2   = (int) wb.getSheetAt(1).getRow(row).getCell(2).getNumericCellValue();
                 int distance = (int) wb.getSheetAt(1).getRow(row).getCell(3).getNumericCellValue();
-                map.put(new Pair(point1, point2), distance);
+
+                Integer oldDistance = map.get(new Pair(point1, point2));
+                if (oldDistance == null || oldDistance > distance)
+                    map.put(new Pair(point1, point2), distance);
             }
         }
         catch (IOException ex)
@@ -58,7 +63,7 @@ public class ExcelReader {
     public @Nullable List<Task> ReadFlightsTable(Map<String, Integer> points) {
         List<Task> list = new ArrayList<>();
         try {
-            Workbook wb = new XSSFWorkbook(new FileInputStream("src/main/resources/Flights.xlsx"));
+            Workbook wb = new XSSFWorkbook(new FileInputStream(basePath + "Flights.xlsx"));
             for (int row = 1; row < 466; row++) {
                 String data = wb.getSheetAt(0).getRow(row).getCell(0).getStringCellValue();
                 LocalDateTime time = wb.getSheetAt(0).getRow(row).getCell(5).getLocalDateTimeCellValue();
