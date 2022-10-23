@@ -68,6 +68,11 @@ public class AvailableBusesList {
             availableBuses.add(newBus);
     }
 
+    public void ReleaseBus(BusTask task) {
+        for (AvailableBus bus:availableBuses){
+
+        }
+    }
 }
 
 @Getter
