@@ -83,18 +83,20 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-        .cors(Customizer.withDefaults()) // by default uses a Bean by the name of corsConfigurationSource
-        .authorizeRequests(auth -> auth
-        .anyRequest().authenticated())
-        .httpBasic(Customizer.withDefaults())
-        .build();
+        return http.cors().and().csrf().disable()
+                        .authorizeRequests()
+                            .antMatchers("/api/v1")
+                            .permitAll()
+                        .anyRequest()
+                            .authenticated()
+                        .and()
+                            .httpBasic().and().build();
     }
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:300"));
         configuration.setAllowedMethods(Arrays.asList("GET"));
         configuration.setAllowedHeaders(List.of("Authorization"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
