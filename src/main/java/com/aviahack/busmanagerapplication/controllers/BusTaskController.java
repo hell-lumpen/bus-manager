@@ -1,22 +1,20 @@
 package com.aviahack.busmanagerapplication.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.aviahack.busmanagerapplication.entities.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/task")
 public class BusTaskController {
     private final List<BusTask> tasks = List.of(
-            new BusTask(100, 200, 150),
-            new BusTask(50, 150, 30),
-            new BusTask(100, 200, 150)
+            new BusTask(1L, 100, 200, 150),
+            new BusTask(2L, 50, 150, 30),
+            new BusTask(3L, 100, 200, 150)
 
     );
+    @GetMapping("/all")
     public List<BusTask> getAllTasks() {
         return tasks;
     }

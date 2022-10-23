@@ -26,7 +26,8 @@ public class BusTask {
     private TaskState state;
     private ArrayList<Long> busIdArrayList; // список автобусов если на выполнение задания не хватит одного
 
-    public BusTask(int startPointId, int endPointId, int passengerNumber) {
+    public BusTask(Long id, int startPointId, int endPointId, int passengerNumber) {
+        this.busTaskId = id;
         this.startPointId = startPointId;
         this.endPointId = endPointId;
         this.passengerNumber = passengerNumber;
