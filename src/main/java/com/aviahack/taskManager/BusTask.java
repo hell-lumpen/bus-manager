@@ -25,6 +25,7 @@ public class BusTask {
         locationStart = task.getStartInd();
         locationEnd = task.getEndInd();
         countPeople = task.getNumberOfPassengers();
+        busesList = new ArrayList<Integer>();
     }
 
     @Override
