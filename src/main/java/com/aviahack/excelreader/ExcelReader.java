@@ -47,7 +47,10 @@ public class ExcelReader {
                 int point1   = (int) wb.getSheetAt(1).getRow(row).getCell(1).getNumericCellValue();
                 int point2   = (int) wb.getSheetAt(1).getRow(row).getCell(2).getNumericCellValue();
                 int distance = (int) wb.getSheetAt(1).getRow(row).getCell(3).getNumericCellValue();
-                map.put(new Pair(point1, point2), distance);
+
+                Integer oldDistance = map.get(new Pair(point1, point2));
+                if (oldDistance == null || oldDistance > distance)
+                    map.put(new Pair(point1, point2), distance);
             }
         }
         catch (IOException ex)

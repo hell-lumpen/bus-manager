@@ -24,7 +24,7 @@ public class Main {
         task = new BusTask();
         task.locationStart = 855;
         task.locationEnd = 2;
-        task.countPeople = 200;
+        task.countPeople = 220;
         task.busesList = new ArrayList<>();
         task.setTimeStart(LocalDateTime.of(2022, 10, 01, 00, 05));
         task.setTimeEnd(LocalDateTime.of(2022, 10, 01, 00, 15));
