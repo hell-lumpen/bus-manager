@@ -1,7 +1,5 @@
 package com.aviahack.excelreader;
 
-import lombok.Singleton;
-
 import java.util.Map;
 
 /**
@@ -9,7 +7,7 @@ import java.util.Map;
  * для возможности быстрой замены алгоритма поиска растояния (например на дейкстру если возможно,
  * что между двумя точками есть не прямой кротчайший путь)
  */
-@Singleton(style = Singleton.Style.HOLDER)
+
 public class DistanceManager {
     Map<Pair, Integer> distanceMap;
     public DistanceManager() {
