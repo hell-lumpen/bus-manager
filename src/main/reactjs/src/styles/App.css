@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.task {
+    display: flex;
+    padding: 15px;
+    border: 1px solid #6a768c;
+    margin: 15px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    color: #333741;
+
+
+}
+
+.queueDiv {
+    margin: 30px;
+    /*background-color: #e3e1e3;*/
+    width: 75%;
+    padding: 20px;
+    max-height: 648px;
+    height: 50vh;
+    overflow: scroll;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+    color: #333741;
+    box-shadow: 0 0 10px rgba(122,122,122,0.5);
+
+}
+.inProcess {
+    margin: 30px;
+    /*background-color: #e1f2ff;*/
+    width: 75%;
+    padding: 20px;
+    max-height: 432px;
+    height: 40vh;
+    overflow: scroll;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+    color: #333741;
+    box-shadow: 0 0 10px rgba(122,122,122,0.5);
+}
+
+.gridContainer {
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-template-rows:repeat(2, 1fr);
+    row-gap: 50px;
+}
+#item1 {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 5;
+
+
+}
+#item2 {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    row-gap: 10px;
+
+}
+#item3 {
+    grid-row-start: 1;
+    grid-row-end: 5;
+    grid-column-start: 4;
+    grid-column-end: 6;
+    margin-left: 60px;
+    margin-right: 30px;
+    margin-top: 30px;
+}
+.buttonStyle {
+    display: block;
+    width: 100%;
+    height: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #6a768c;
+    box-shadow: 0 0 10px rgba(122,122,122,0.5);
+}
+.loggedStyle {
+    /*background-color: #adbfd2;*/
+    height: 85vh;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(122,122,122,0.5);
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border: none;
+    border-radius: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+span {
+    margin-right:6vw;
+}
+/*
+.header {
+    height: 3vh;
+    width: 72%;
+    display: block;
+    background-color: white;
+}*/
+.optionsButton {
+    float: right;
+
+}
+
+
+.container {
+    width: 90%;
+    margin: 20px auto;
+}
+
+/* Style the custom slider */
+.custom-slider {
+    width: 100%;
+    height: 30px;
+    background: #eee;
+    opacity: 0.8;
+    outline: none;
+    transition: 0.3s;
+    -webkit-appearance: none;
+}
+
+.custom-slider:hover {
+    opacity: 1;
+}
+
+.custom-slider::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 30px;
+    height: 30px;
+    background: #4caf50;
+    cursor: pointer;
+}
+
+.custom-slider::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    background: #4caf50;
+    cursor: pointer;
+}
+
+.dropdowm {
+    float: right;
+    max-height: 20px;
+    max-width: 90px;
+}
