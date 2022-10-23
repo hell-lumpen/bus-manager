@@ -20,5 +20,4 @@ public class DistanceManager {
             distance = 3;
         return distance;
     }
-
 }

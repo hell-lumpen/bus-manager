@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import com.aviahack.taskManager.DistanceManager;
 @Getter
-class Task {
+public class Task {
     public ArrayList<Integer> busesList;
     LocalDateTime startTime;
     int startInd;

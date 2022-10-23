@@ -1,6 +1,7 @@
 package com.aviahack.taskManager;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ public class AvailableBusesList {
     AvailableBusesList() {
         availableBuses = new ArrayList<AvailableBus>();
     }
-    List<AvailableBus> GetBusesAviableSinse(LocalDateTime startTime, LocalDateTime endTime ) {
+    List<AvailableBus> GetBusesAviableSinse(@NonNull LocalDateTime startTime,@NonNull LocalDateTime endTime ) {
         int ind1 = 0;
         int ind2 = 0;
         ArrayList<AvailableBus> list = new ArrayList<>();
@@ -29,14 +30,14 @@ public class AvailableBusesList {
 //        return availableBuses.subList(ind1,ind2);
     }
 
-    public void BookingBus(AvailableBus avBus, Task task){
+    public void BookingBus(AvailableBus avBus, BusTask task){
         LocalDateTime startTime = task.getTimeStart();
         LocalDateTime endTime = task.getTimeEnd();
         AvailableBus newBus = new AvailableBus();
         availableBuses.remove(avBus);
 
-        Task leftTask = avBus.getLeftTask();
-        Task rightTask = avBus.getRightTask();
+        BusTask leftTask = avBus.getLeftTask();
+        BusTask rightTask = avBus.getRightTask();
 
         //установка правой границы
         newBus.setRightTask(task);
@@ -77,9 +78,9 @@ public class AvailableBusesList {
 class AvailableBus implements Comparable<AvailableBus> {
     private int busId;
 
-    private Task leftTask;
+    private BusTask leftTask;
 
-    private Task rightTask;
+    private BusTask rightTask;
     private LocalDateTime timeStart;
     private LocalDateTime timeEnd;
 
